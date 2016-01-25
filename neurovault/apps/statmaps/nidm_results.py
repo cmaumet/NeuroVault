@@ -7,6 +7,7 @@ from collections import Counter
 from fnmatch import fnmatch
 from rdflib.plugins.parsers.notation3 import BadSyntax
 from urlparse import urlparse
+from nidmresults.reader import NIDMReader
 
 
 class NIDMUpload:
@@ -101,6 +102,9 @@ class NIDMUpload:
 
         # uniquify contrast values by file
         self.contrasts = {v['statFile']:v for v in self.contrasts}.values()
+        print self.contrasts
+        print NIDMReader.get_statistic_maps(self.raw_ttl, format='turtle')
+
 
         return self.contrasts
 
